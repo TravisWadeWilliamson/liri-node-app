@@ -1,5 +1,5 @@
 To My Benevolent Grader:
-This was all I could get done. This was hard, really hard. I want to finish it, but Imma need a shitton (actual measurement) of guidance. 
+This was all I could get done. I was able to dig in and get the info from Bandsintown, but not able to dig into the other two to extract the necessary info. This was hard, really hard. I want to finish it, but Imma need a shitton (actual measurement) of guidance. 
 
 # Liri Node CLI App
 
@@ -68,4 +68,11 @@ The information is passed between all three of the files via the `require` metho
 Once the search parameters and API keys are all matched, the call to the respective API is made and the information displayed in the command line. Yea, no CSS!
 
 ## Watch It In Action
+### Bandsintown
 ![](concert-gif.gif)
+
+### Spotify (couldn't dig into the object)
+![](spotify-gif.gif)
+
+### OMBd (couldn't dig into the object)
+![](movie-gif.gif)

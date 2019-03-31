@@ -31,8 +31,9 @@ const callGetBandsInTown = q => {
 const callOmdbMovies = q => {
   axios.get(`http://www.omdbapi.com/?apikey=${keys.omdb.apiKey}&t=${q}`)
     .then(res => {
-      const movie = res.data[0];
-      console.log(res.data.title);
+      
+      const movie = res.data;
+      console.log(res.data);
     });
 };
 
