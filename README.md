@@ -61,3 +61,6 @@ But in order to do that, we need to have access to our API keys which are stored
 The API keys have one layer between them and the JavaScrip file called `keys.js`which acts as a liaison between `liri-node-app.js` and `.env`. 
 
 The information is passed between all three of the files via the `require` method. 
+
+Once the search parameters and API keys are all matched, the call to the respective API is made and the information displayed in the command line. Yea, no CSS!
+
