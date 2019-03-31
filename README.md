@@ -54,7 +54,7 @@ If no band name is entered you'll get back a default of Chain Smokers.
 ## The Works
 Liri gets its information from a series of API calls: Spotify for music, OMDb for movies and Bandintown for concert information.
 
-The app depends on several different files to do its job. When a user inputs a search parameter into the command line, the `liri-node-app.js`file will look at the search parameter and then send requests either by the axios package or directly to Spotify in the case of a song. 
+The app depends on several different files to do its job. When a user inputs a search parameter into the command line, the `liri-node-app.js`file will look at the search parameter and then send API requests by the axios package to the respective sites. 
 
 But in order to do that, we need to have access to our API keys which are stored two layers down in their own separate and "hidden" `.env`file. 
 
@@ -64,3 +64,5 @@ The information is passed between all three of the files via the `require` metho
 
 Once the search parameters and API keys are all matched, the call to the respective API is made and the information displayed in the command line. Yea, no CSS!
 
+## Watch It In Action
+![](concert-gif.gif)

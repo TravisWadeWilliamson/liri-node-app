@@ -8,17 +8,15 @@ const moment = require('moment');
 const fs = require('fs');
 
 const apiCall = process.argv[2];
-const query = process.argv[3];
-
+const query = process.argv.slice(3).join(' ');
+``
 const callSpotify = q => {
   spotify
     .search({ type: 'track', query: q, limit: 1})
     .then(function (response) {
       console.log(response.tracks);
     })
-    .catch(function (err) {
-      console.log(err);
-    });
+    
 };
 
 const callGetBandsInTown = q => {
@@ -29,50 +27,25 @@ const callGetBandsInTown = q => {
     });
 };
 
+
 const callOmdbMovies = q => {
   axios.get(`http://www.omdbapi.com/?apikey=${keys.omdb.apiKey}&t=${q}`)
     .then(res => {
       const movie = res.data[0];
-      console.log(res.data);
+      console.log(res.data.title);
     });
 };
 
 switch (apiCall) {
   case 'spotify':
-    //execute logic here
     callSpotify(query)
     break;
-  case 'movies':
+  case 'movie':
     callOmdbMovies(query);
     break;
-  case 'bands':
+  case 'concert':
     callGetBandsInTown(query);
     break;
   default:
-    console.log('incorrect input')
-
-
-
+    console.log('Incorrect input, silly!')
 }
-
-
-
-
-
-
-
-// const Spotify = require('node-spotify-api');
-
-// const spotify = new Spotify(spotifyKeys);
-
-// spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-//   if (err) {
-//     return console.log('Error occurred: ' + err);
-//   }
-
-// console.log(data); 
-// });
-
-// // var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=" + bandsInTown.apiKey;
-
-// // process.argv
