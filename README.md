@@ -1,3 +1,6 @@
+To My Benevolent Grader:
+This was all I could get done. This was hard, really hard. I want to finish it, but Imma need a shitton (actual measurement) of guidance. 
+
 # Liri Node CLI App
 
 ## What It Is
