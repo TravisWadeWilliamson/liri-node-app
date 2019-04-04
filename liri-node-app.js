@@ -12,18 +12,22 @@ const query = process.argv.slice(3).join(' ');
 ``
 const callSpotify = q => {
   spotify
-    .search({ type: 'track', query: q, limit: 1})
+    .search({ type: 'track', query: q, limit: 1 })
     .then(function (response) {
       console.log(response.tracks);
     })
-    
+
 };
 
 const callGetBandsInTown = q => {
   axios.get(`https://rest.bandsintown.com/artists/${q}/events?app_id=codingbootcamp`)
     .then(res => {
       const event = res.data[0];
-      console.log(`Venue: ${event.venue.name}\nDate: ${event.datetime}\nLocation: ${event.venue.city}, ${event.venue.country}`);
+      if (res.data[0] === undefined) {
+        console.log(`Ain't no concerts!`);
+      } else {
+        console.log(`Venue: ${event.venue.name}\nDate: ${event.datetime}\nLocation: ${event.venue.city}, ${event.venue.country}`);
+      }
     });
 };
 
@@ -31,7 +35,7 @@ const callGetBandsInTown = q => {
 const callOmdbMovies = q => {
   axios.get(`http://www.omdbapi.com/?apikey=${keys.omdb.apiKey}&t=${q}`)
     .then(res => {
-      
+
       const movie = res.data;
       console.log(res.data);
     });
