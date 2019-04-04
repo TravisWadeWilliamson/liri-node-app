@@ -1,5 +1,5 @@
 To My Benevolent Grader:
-This was all I could get done. I was able to dig in and get the info from Bandsintown, but not able to dig into the other two to extract the necessary info. This was hard, really hard. I want to finish it, but Imma need a shitton (actual measurement) of guidance. 
+This was all I could get done. I haven't figured out how to have a default movie, song or concert if that is left blank, I haven't used moment to prettify the date for the concert and I haven't done anything with `fs`.  This was hard, really hard. I want to finish it, but Imma need a shitton (actual measurement) of guidance. 
 
 # Liri Node CLI App
 
@@ -24,7 +24,7 @@ When you enter a movie title you will have access to the following information:
 
 * title
 * release year
-* rating
+* rating (G, PG, etc.)
 * genre
 * the country in which it was produced
 * the language of the movie
@@ -39,8 +39,9 @@ If no movie title is entered you'll get back a default of *Mr. Nobody*.
 Entering the name of a song will provide you the following:
 
 * song title
-* the album on which it appears 
 * artist(s)
+* the album on which it appears 
+* whether or not the lyrics are explicit
 * a preview link of the song.
 
 If no song title is entered you'll get back a default of *God Save the Queen*.
@@ -71,8 +72,8 @@ Once the search parameters and API keys are all matched, the call to the respect
 ### Bandsintown
 ![](concert-gif.gif)
 
-### Spotify (couldn't dig into the object)
+### Spotify 
 ![](spotify-gif.gif)
 
-### OMBd (couldn't dig into the object)
+### OMBd
 ![](movie-gif.gif)

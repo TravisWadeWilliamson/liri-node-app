@@ -1,22 +1,34 @@
 const keys = require('./keys.js');
 const Spotify = require('node-spotify-api');
 const spotify = new Spotify(keys.spotify);
-const ombd = keys.omdb;
-const bandsInTown = keys.bandsInTown;
 const axios = require('axios');
 const moment = require('moment');
 const fs = require('fs');
 
 const apiCall = process.argv[2];
 const query = process.argv.slice(3).join(' ');
-``
+
 const callSpotify = q => {
   spotify
     .search({ type: 'track', query: q, limit: 1 })
     .then(function (response) {
-      console.log(response.tracks);
-    })
+      // console.log(JSON.stringify(response, null, 2));
+      const track = response.tracks.items[0].name;
+      const artist = response.tracks.items[0].album.artists[0].name;
+      const album = response.tracks.items[0].album.name;
+      const previewSong = response.tracks.items[0].preview_url;
+      const isExplicitLyrics = response.tracks.items[0].explicit;
 
+      console.log(`Track Title: ${track}`);
+      console.log(`Artist: ${artist}`);
+      console.log(`Album: ${album}`);
+      if (isExplicitLyrics === true) {
+        console.log(`Warning: Contains Explicit Lyrics!`)
+      } else {
+        console.log(`Lyrics suitable for most listeners.`)
+      };
+      console.log(`Preview Song: ${previewSong}`);
+    });
 };
 
 const callGetBandsInTown = q => {
@@ -31,19 +43,28 @@ const callGetBandsInTown = q => {
     });
 };
 
-
 const callOmdbMovies = q => {
   axios.get(`http://www.omdbapi.com/?apikey=${keys.omdb.apiKey}&t=${q}`)
     .then(res => {
-
       const movie = res.data;
-      console.log(res.data);
+      const rottenTomatoesRating = movie.Ratings[1].Value
+
+      console.log(`Title: ${movie.Title}`)
+      console.log(`Released: ${movie.Year}`)
+      console.log(`Rated: ${movie.Rated}`)
+      console.log(`Genre: ${movie.Genre}`)
+      console.log(`Language: ${movie.Language}`)
+      console.log(`Country: ${movie.Country}`)
+      console.log(`Actors: ${movie.Actors}`)
+      console.log(`Synopsis: ${movie.Plot}`)
+      console.log(`IMDB Rating: ${movie.imdbRating}`)
+      console.log(`Rotten Tomatoes Rating: ${rottenTomatoesRating}`)
     });
 };
 
 switch (apiCall) {
   case 'spotify':
-    callSpotify(query)
+    callSpotify(query);
     break;
   case 'movie':
     callOmdbMovies(query);
@@ -53,4 +74,4 @@ switch (apiCall) {
     break;
   default:
     console.log('Incorrect input, silly!')
-}
+};
