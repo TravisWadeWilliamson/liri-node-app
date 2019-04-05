@@ -62,16 +62,35 @@ const callOmdbMovies = q => {
     });
 };
 
-switch (apiCall) {
-  case 'spotify':
-    callSpotify(query);
-    break;
-  case 'movie':
-    callOmdbMovies(query);
-    break;
-  case 'concert':
-    callGetBandsInTown(query);
-    break;
-  default:
-    console.log('Incorrect input, silly!')
+const doWhatItSays = () => {
+  fs.readFile('./random.txt', 'utf8', function (error, data) {
+    if (error) return console.log(error)
+    var dataArr = data.split(",");
+    var apiCall = dataArr[0]
+    var query = dataArr[1]
+    commands(apiCall, query)
+  });
+}
+
+const commands = (apiCall, query) => {
+  switch (apiCall) {
+    case 'spotify':
+      if (query) callSpotify(query)
+      else callSpotify('god save the queen');
+      break;
+    case 'movie':
+      if (query) callOmdbMovies(query)
+      else callOmdbMovies('alien')
+      break;
+    case 'concert':
+      if (query) callGetBandsInTown(query);
+      else callGetBandsInTown('chain smokers');
+      break;
+    case 'do-this':
+      doWhatItSays();
+      break;
+    default:
+      console.log('Incorrect input, silly!');
+  }
 };
+commands(apiCall, query)

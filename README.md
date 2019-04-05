@@ -1,6 +1,3 @@
-To My Benevolent Grader:
-This was all I could get done. I haven't figured out how to have a default movie, song or concert if that is left blank, I haven't used moment to prettify the date for the concert and I haven't done anything with `fs`.  This was hard, really hard. I want to finish it, but Imma need a shitton (actual measurement) of guidance. 
-
 # Liri Node CLI App
 
 ## What It Is
@@ -33,7 +30,7 @@ When you enter a movie title you will have access to the following information:
 * IMDB rating 
 * Rotten Tomatoes rating.
 
-If no movie title is entered you'll get back a default of *Mr. Nobody*.
+If no movie title is entered you'll get back a default of *Alien*.
 
 ### Song Title:
 Entering the name of a song will provide you the following:
@@ -46,6 +43,11 @@ Entering the name of a song will provide you the following:
 
 If no song title is entered you'll get back a default of *God Save the Queen*.
 
+### Do-this:
+Entering the command "do-this" will use `fs` to grab text from a file called random.txt. Living withing that file is this text: "spotify,Bela lugosi's dead".
+
+A function pulls the text from that file, turns it into an array, then joins it back into a string which is then used to display information about that song on the command line.
+
 ### Band
 By entering in a band name you have access to the following concert information:
 
@@ -53,7 +55,7 @@ By entering in a band name you have access to the following concert information:
 * venue location: city, country
 * date of the event
 
-If no band name is entered you'll get back a default of Chain Smokers.
+If no band name is entered you'll get back a default of *Chain Smokers*.
 
 ## The Works
 Liri gets its information from a series of API calls: Spotify for music, OMDb for movies and Bandintown for concert information.
@@ -72,8 +74,20 @@ Once the search parameters and API keys are all matched, the call to the respect
 ### Bandsintown
 ![](concert-gif.gif)
 
+### Bandsintown No Group
+![](concert-noname-gif.gif)
+
 ### Spotify 
 ![](spotify-gif.gif)
 
+### Spotify No Song
+![](spotify-noname-gif.gif)
+
+### Do-this
+![](do-this-gif.gif)
+
 ### OMBd
 ![](movie-gif.gif)
+
+### OMBd No Movie Title
+![](movie-noname-gif.gif)
